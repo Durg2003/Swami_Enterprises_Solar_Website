@@ -1,0 +1,153 @@
+
+{% extends 'core/base.html' %}
+
+{% block title %}
+    Solar Products | Swami Enterprises
+{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+    <div class="eyebrow">PRODUCT EXPLORER</div>
+
+    <h1>
+        Understand your <em>solar options.</em>
+    </h1>
+
+    <p>
+        Browse panels, inverters, batteries and complete systems.
+        Product availability, prices and specifications must be
+        verified before purchase.
+    </p>
+</section>
+
+<section class="section">
+
+    <form class="filter-bar" method="get">
+        <input
+            name="q"
+            value="{{ q }}"
+            placeholder="Search by product or brand…"
+        >
+
+        <select name="category">
+            <option value="">All categories</option>
+
+            {% for value, label in categories %}
+                <option
+                    value="{{ value }}"
+                    {% if category == value %}selected{% endif %}
+                >
+                    {{ label }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <button class="btn btn-primary" type="submit">
+            Search
+        </button>
+    </form>
+
+    {% if products %}
+
+        <div class="product-grid">
+
+            {% for product in products %}
+
+                <article class="product-card">
+
+                    <div class="product-art">
+                        {% if product.category == 'panel' %}
+                            ▦
+                        {% elif product.category == 'inverter' %}
+                            ⌁
+                        {% elif product.category == 'battery' %}
+                            ▰
+                        {% else %}
+                            ϟ
+                        {% endif %}
+
+                        <span>{{ product.get_category_display }}</span>
+                    </div>
+
+                    <div class="product-content">
+
+                        <small class="product-brand">
+                            {{ product.brand|default:'Brand to be confirmed' }}
+                        </small>
+
+                        <h3>{{ product.name }}</h3>
+
+                        {% if product.capacity %}
+                            <p class="capacity">
+                                {{ product.capacity }}
+                            </p>
+                        {% endif %}
+
+                        <p>
+                            {{ product.description|default:'Contact us for verified specifications and availability.' }}
+                        </p>
+
+                        <div class="specs">
+
+                            {% if product.efficiency %}
+                                <span>
+                                    <small>Efficiency</small>
+                                    <b>{{ product.efficiency }}</b>
+                                </span>
+                            {% endif %}
+
+                            {% if product.warranty %}
+                                <span>
+                                    <small>Warranty</small>
+                                    <b>{{ product.warranty }}</b>
+                                </span>
+                            {% endif %}
+
+                        </div>
+
+                        {% if product.price_from %}
+                            <div class="price">
+                                From ₹{{ product.price_from|floatformat:0 }}
+                                <small>indicative</small>
+                            </div>
+                        {% else %}
+                            <div class="price">
+                                Request pricing
+                            </div>
+                        {% endif %}
+
+                        <a class="text-link" href="{% url 'contact' %}">
+                            Ask about this product ↗
+                        </a>
+
+                    </div>
+
+                </article>
+
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <div class="empty-state">
+            <div>▦</div>
+
+            <h3>Your catalogue starts here.</h3>
+
+            <p>
+                No products match this search yet. Add verified products
+                in the admin dashboard to display them here.
+            </p>
+
+            <a class="btn btn-primary" href="/admin/">
+                Open product dashboard ↗
+            </a>
+        </div>
+
+    {% endif %}
+
+</section>
+
+{% endblock %}

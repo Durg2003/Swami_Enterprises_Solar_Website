@@ -1,0 +1,154 @@
+
+{% extends 'core/base.html' %}
+
+{% block title %}
+    Request a Solar Quote | Swami Enterprises
+{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+    <div class="eyebrow">START A CONVERSATION</div>
+
+    <h1>
+        Tell us about your <em>solar project.</em>
+    </h1>
+
+    <p>
+        Share a few details so the team can understand your requirement.
+        Required fields are marked with an asterisk.
+    </p>
+</section>
+
+<section class="section contact-layout">
+
+    <div class="contact-info">
+        <h2>A good quote starts with good information.</h2>
+
+        <p>
+            Tell us about your property and current electricity bill.
+            A site assessment is needed before confirming system size,
+            pricing or savings.
+        </p>
+
+        <div class="contact-step">
+            <span>01</span>
+
+            <div>
+                <b>Share your details</b>
+                <small>Contact information and property type.</small>
+            </div>
+        </div>
+
+        <div class="contact-step">
+            <span>02</span>
+
+            <div>
+                <b>Discuss your requirement</b>
+                <small>Bill, roof space, usage and backup needs.</small>
+            </div>
+        </div>
+
+        <div class="contact-step">
+            <span>03</span>
+
+            <div>
+                <b>Review a tailored proposal</b>
+                <small>
+                    After equipment and site details are verified.
+                </small>
+            </div>
+        </div>
+    </div>
+
+    <form method="post" class="contact-form">
+        {% csrf_token %}
+
+        <h2>Request a callback</h2>
+
+        <div class="form-grid">
+
+            <label>
+                Full name *
+                <input
+                    name="name"
+                    required
+                    maxlength="120"
+                    placeholder="Your name"
+                >
+            </label>
+
+            <label>
+                Phone number *
+                <input
+                    name="phone"
+                    required
+                    maxlength="20"
+                    inputmode="tel"
+                    pattern="[0-9+() -]{8,20}"
+                    placeholder="Mobile number"
+                >
+            </label>
+
+            <label>
+                Email address
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="you@example.com"
+                >
+            </label>
+
+            <label>
+                City / area
+                <input
+                    name="city"
+                    placeholder="Your city"
+                >
+            </label>
+
+            <label>
+                Property type
+                <select name="property_type">
+                    <option value="home">Residential</option>
+                    <option value="business">Commercial</option>
+                    <option value="industrial">Industrial</option>
+                    <option value="other">Other</option>
+                </select>
+            </label>
+
+            <label>
+                Monthly electricity bill (₹)
+                <input
+                    name="monthly_bill"
+                    type="number"
+                    min="0"
+                    placeholder="e.g. 2500"
+                >
+            </label>
+
+            <label class="span-two">
+                What would you like to know?
+                <textarea
+                    name="message"
+                    rows="4"
+                    placeholder="Solar panels, backup battery, roof size, current bill…"
+                ></textarea>
+            </label>
+
+        </div>
+
+        <button class="btn btn-primary full-btn" type="submit">
+            Submit enquiry ↗
+        </button>
+
+        <small class="fine-print">
+            Your enquiry is stored in the website database for authorised
+            admin users. Configure hosting, access controls and a privacy
+            contact before public launch.
+        </small>
+    </form>
+
+</section>
+
+{% endblock %}

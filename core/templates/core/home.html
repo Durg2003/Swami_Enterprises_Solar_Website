@@ -1,0 +1,238 @@
+
+{% extends 'core/base.html' %}
+
+{% block title %}
+    Swami Enterprises | Solar Made Simple
+{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <div class="hero-copy">
+        <div class="eyebrow">
+            <span></span>
+            CLEAN ENERGY, MADE PRACTICAL
+        </div>
+
+        <h1>
+            Make the sun work<br>
+            for <em>your home.</em>
+        </h1>
+
+        <p>
+            Discover rooftop solar options, understand the equipment,
+            and estimate what solar could mean for your electricity bill.
+        </p>
+
+        <div class="hero-actions">
+            <a class="btn btn-primary" href="{% url 'calculator' %}">
+                Calculate your savings ↗
+            </a>
+
+            <a class="btn btn-ghost" href="{% url 'products' %}">
+                Explore products
+            </a>
+        </div>
+
+        <div class="hero-note">
+            <span>✓</span>
+            Clear information · Informed decisions · Tailored enquiries
+        </div>
+    </div>
+
+    <div class="hero-art">
+        <div class="sun"></div>
+
+        <div class="solar-roof">
+            <div class="panel-grid">
+                {% for i in "123456789012" %}
+                    <span></span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="float-card">
+            <span class="float-icon">↘</span>
+
+            <div>
+                <small>YOUR ENERGY JOURNEY</small>
+                <strong>Starts with one estimate</strong>
+            </div>
+        </div>
+
+        <div class="art-caption">
+            ROOFTOP SOLAR / INDIA
+        </div>
+    </div>
+</section>
+
+<section class="trust-strip">
+    <div>
+        <b>01</b>
+        <span>
+            Explore solar<br>
+            <small>Panels, inverters & batteries</small>
+        </span>
+    </div>
+
+    <div>
+        <b>02</b>
+        <span>
+            Estimate savings<br>
+            <small>Based on your electricity bill</small>
+        </span>
+    </div>
+
+    <div>
+        <b>03</b>
+        <span>
+            Request a quote<br>
+            <small>Share your requirements</small>
+        </span>
+    </div>
+</section>
+
+<section class="section">
+    <div class="section-head">
+        <div>
+            <div class="eyebrow">SOLAR, YOUR WAY</div>
+            <h2>Solutions for every roof.</h2>
+        </div>
+
+        <a class="text-link" href="{% url 'products' %}">
+            View product catalogue ↗
+        </a>
+    </div>
+
+    <div class="solution-grid">
+        <a class="solution-card home-card" href="{% url 'contact' %}">
+            <div class="solution-symbol">⌂</div>
+            <span class="tag">FOR YOUR HOME</span>
+            <h3>Residential Solar</h3>
+            <p>
+                Explore rooftop solar for homes and understand your
+                potential bill savings.
+            </p>
+            <span class="card-arrow">↗</span>
+        </a>
+
+        <a class="solution-card business-card" href="{% url 'contact' %}">
+            <div class="solution-symbol">▥</div>
+            <span class="tag">FOR YOUR BUSINESS</span>
+            <h3>Commercial Solar</h3>
+            <p>
+                Review solar options for shops, offices and other
+                commercial properties.
+            </p>
+            <span class="card-arrow">↗</span>
+        </a>
+
+        <a class="solution-card equipment-card" href="{% url 'products' %}">
+            <div class="solution-symbol">ϟ</div>
+            <span class="tag">EQUIPMENT GUIDE</span>
+            <h3>Panels & Inverters</h3>
+            <p>
+                Compare product specifications and organise your
+                shortlist in one place.
+            </p>
+            <span class="card-arrow">↗</span>
+        </a>
+    </div>
+</section>
+
+<section class="calculator-banner">
+    <div>
+        <div class="eyebrow light">A BETTER FIRST STEP</div>
+
+        <h2>
+            Curious how much solar<br>
+            could save you?
+        </h2>
+
+        <p>
+            Use your monthly bill to get an indicative system size,
+            generation and savings estimate.
+        </p>
+
+        <a class="btn btn-white" href="{% url 'calculator' %}">
+            Open savings calculator ↗
+        </a>
+    </div>
+
+    <div class="banner-stat">
+        <span>₹</span>
+        <strong>Estimate</strong>
+        <small>
+            Indicative only — actual savings depend on site conditions,
+            tariff and system design.
+        </small>
+    </div>
+</section>
+
+<section class="section">
+    <div class="section-head">
+        <div>
+            <div class="eyebrow">PRODUCT DISCOVERY</div>
+            <h2>Know your solar equipment.</h2>
+            <p class="subhead">
+                A useful solar setup starts with understanding what
+                each component does.
+            </p>
+        </div>
+    </div>
+
+    <div class="equipment-grid">
+        <div class="equipment">
+            <span>▦</span>
+            <h3>Solar panels</h3>
+            <p>
+                Convert sunlight into DC electricity. Compare wattage,
+                efficiency, technology and product warranty.
+            </p>
+        </div>
+
+        <div class="equipment">
+            <span>⌁</span>
+            <h3>Solar inverter</h3>
+            <p>
+                Converts DC electricity into usable AC power. Select
+                based on system design and compatibility.
+            </p>
+        </div>
+
+        <div class="equipment">
+            <span>▰</span>
+            <h3>Battery storage</h3>
+            <p>
+                Stores energy for compatible systems. Capacity and
+                backup time depend on your loads.
+            </p>
+        </div>
+
+        <div class="equipment">
+            <span>⌘</span>
+            <h3>Balance of system</h3>
+            <p>
+                Mounting structure, cables, protection devices,
+                earthing and monitoring equipment.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="final-cta">
+    <div>
+        <div class="eyebrow">LET'S PLAN YOUR SOLAR</div>
+
+        <h2>
+            Every good project starts<br>
+            with the right questions.
+        </h2>
+    </div>
+
+    <a class="btn btn-primary" href="{% url 'contact' %}">
+        Tell us about your project ↗
+    </a>
+</section>
+
+{% endblock %}
